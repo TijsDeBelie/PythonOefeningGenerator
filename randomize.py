@@ -5,7 +5,7 @@ import createHTML
 
 MinNumber = 2
 MaxNumber = 4
-AmountOfExcercises = 5
+AmountOfExcercises = 100
 
 def randomnumber(min, max):
         return (random.randint(min, max))
@@ -22,23 +22,17 @@ def randomnumber(min, max):
 # 000101001 --> alle nullen naar 1 en 1 naar 0 --> 111010110 + 1 --> 111010111 (2 complement systeem)
 # XOR is 1111111111 vergelijken (geen verschil is 0, wel verschil is 1)
 # 001101101
-# 111111111 --> 512
+# 111111111
+# 001101101
+# 
+#  --> 512
 # 110010010
 
 
 # (~500)^ 0x3FF
 
-def intToBin(n):
-    nums = [n]
-    while n > 1:
-        n = n // 2
-        nums.append(n)
+ToBin = lambda x, count=8: "".join(map(lambda y:str((x>>y)&1), range(count-1, -1, -1)))
 
-    bits = []
-    for i in nums:
-        bits.append(str(0 if i%2 == 0 else 1))
-    bits.reverse()
-    return ''.join(bits)
 
 def makearray(number, bewerking, gate):
         array = list()
@@ -56,7 +50,7 @@ def makearray(number, bewerking, gate):
                 if rand == 1:
                         print("do nothing")
                 elif rand == 2:
-                        array[x] = intToBin(array[x])
+                        array[x] = ToBin(array[x])
                 elif rand == 3:
                         array[x] = hex(array[x])
         print(array)
@@ -71,6 +65,13 @@ def makearray(number, bewerking, gate):
         else:
                 makearray(random.randint(MinNumber,MaxNumber),bewerking, gate)
                 
+def tweeComplement(nummer):
+        if (nummer < 0):
+                nummer = (~nummer) ^ 1 * 0x3FF
+        return nummer
+
+def convertOctaal(nummer):
+        return "{0:o}".format(tweeComplement(nummer))
 
 
 bewerkingen = ["+", "-"]
@@ -82,5 +83,9 @@ for x in range(AmountOfExcercises):
         bewerking = bewerkingen[random.randint(0,len(bewerkingen)-1)]
         gate = gates[random.randint(0,len(gates)-1)]
         makearray(random.randint(MinNumber,MaxNumber),bewerking, gate)
-
 createHTML.main(createHTML.globalmessage)
+
+
+
+#wat is octaal? 10 --> 12
+print(convertOctaal(10))
