@@ -1,0 +1,56 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+li{
+    float: left;
+    padding: 2px;
+}
+
+li sub {
+    float: left;
+    margin-top: 10px;
+    font-size: smaller;
+
+}
+sub {
+    vertical-align: sub;
+    font-size: smaller;
+}
+nav ul li{
+    margin: 1px;
+    display:inline;
+}
+
+li p
+{
+    display:inline;
+}
+
+
+span{
+    font-size:0.7em;
+}
+
+.total {
+    float: right;
+    /*display: none;*/
+}
+.gate {
+    background-color: red;
+}
+.number{
+    background-color: lightblue
+}
+.base {
+    background-color: green;
+    
+}
+.bewerking{
+    background-color: darkcyan
+
+}
