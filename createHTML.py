@@ -9,7 +9,6 @@ def is_hex(s):
     except ValueError:
         return False
 
-
 def is_oct(s):
     try:
        int(s, 8)
