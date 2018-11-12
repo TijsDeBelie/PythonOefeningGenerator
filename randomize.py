@@ -40,7 +40,7 @@ def makearray(number, bewerking, gate):
         total = 0
         #TODO totalen berekenen nog niet in orde
         for x in range(number):
-                generatednumber = randomnumber(-1022, 1023)
+                generatednumber = randomnumber(-512, 512)
                 array.append(generatednumber)
 
         if(bewerking =="+"):
@@ -56,7 +56,7 @@ def makearray(number, bewerking, gate):
                 elif rand == 3:
                         array[x] = '{:x}'.format(array[x])
         
-        if(total in range(-1022,1023)):
+        if(total in range(-512,512)):
                 lijst = list()
                 lijst.append(array)
                 lijst.append(total)
