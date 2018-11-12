@@ -2,3 +2,7 @@ Binaire getallen toevoegen en herkennen ?
 OX voor hexadecimaal afsnijden uit strings
 commentaar toevoegen
 
+
+Om een exe te maken
+pyinstaller --onefile <your_script_name>.py
+
