@@ -6,16 +6,18 @@ globalmessage = ""
 
 def whatis(input):
     if type(input) is int:
-        #base 8 ??
-        return "(int)"
+        #base 10
+        return "(10)"
     elif input[:2] == "0x" or input[:3] == "-0x":
         #base 16
-         return "(hex)"
+         return "(16)"
     else:
+        #base 8
+        return "(8)"
+
+""" elif type(input) is bin:
         #base 2
-        return "(binair)"
-
-
+        return "(2)" """
 
 #Om de html te maken en samen te voegen, gebruikt bovenstaande functies om inhoud in te vullen
 def html(array, bewerking, gate):

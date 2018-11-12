@@ -5,7 +5,7 @@ import createHTML
 
 MinNumber = 2
 MaxNumber = 4
-AmountOfExcercises = 100
+AmountOfExcercises = 1
 
 def randomnumber(min, max):
         return (random.randint(min, max))
@@ -37,25 +37,31 @@ ToBin = lambda x, count=8: "".join(map(lambda y:str((x>>y)&1), range(count-1, -1
 def makearray(number, bewerking, gate):
         array = list()
         total = 0
+        #TODO totalen berekenen nog niet in orde
         for x in range(number):
                 print("Cijfer " + str(x + 1))
-                randnumber = randomnumber(-128, 128)
-                array.append(randnumber)
+                generatednumber = randomnumber(-1022, 1023)
+                print("GENERATED NUMBER " + str(generatednumber))
+                array.append(generatednumber)
                 if(bewerking =="+"):
-                        total+=randnumber
+                        total+=generatednumber
+                        print(total)
                 elif(bewerking =="-"):
-                        total-=randnumber
+                        total-=generatednumber
+                        print(total)
         for x in range(len(array)):
-                rand = random.randint(1,3)
+                rand = random.randint(1,4)
                 if rand == 1:
                         print("do nothing")
                 elif rand == 2:
-                        array[x] = ToBin(array[x])
+                        array[x] = convertOctaal(array[x])
                 elif rand == 3:
                         array[x] = hex(array[x])
+                """ elif rand == 4:
+                        array[x] = ToBin(array[x]) """
         print(array)
         
-        if(total in range(-128,128)):
+        if(total in range(-1022,1023)):
                 lijst = list()
                 lijst.append(array)
                 lijst.append(total)
@@ -85,7 +91,20 @@ for x in range(AmountOfExcercises):
         makearray(random.randint(MinNumber,MaxNumber),bewerking, gate)
 createHTML.main(createHTML.globalmessage)
 
-
+#createHTML.html(([10,5,8]), "-", "AND"],"-","AND")
 
 #wat is octaal? 10 --> 12
-print(convertOctaal(10))
+""" print(convertOctaal(12))
+
+
+
+def AND(A, B):
+        return A & B
+def OR(A, B):
+        return A | B
+def XOR(A, B):
+        return A ^ B
+
+print(AND(245, 18))
+print(OR(245, 18))
+print(XOR(245, 18)) """

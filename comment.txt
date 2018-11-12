@@ -1,0 +1,4 @@
+Binaire getallen toevoegen en herkennen ?
+OX voor hexadecimaal afsnijden uit strings
+commentaar toevoegen
+
