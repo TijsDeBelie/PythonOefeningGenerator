@@ -1,8 +1,13 @@
+# GERT VAN DER BREMPT
+# MARGO ANCKAERT
+# TIJS DE BELIE
 try:
         import random
         import createHTML
         import operator
         from functools import reduce
+        import time
+
 except ImportError:
         print("\nEen import error zorgde ervoor dat het programma niet kan starten!\n")
 
@@ -13,9 +18,10 @@ MinNumber = 2
 #Hoeveel getallen er maximum in 1 oefening mogen staan
 MaxNumber = 4
 
-
+start = time.time()
 
 try:
+        print("DIT PROGRAMMA WERD GEMAAKT DOOR GERT VAN DER BREMPT, MARGO ANCKAERT EN TIJS DE BELIE")
         AmountOfExcercises = int(input('\n\n\n\n\n\nHoeveel oefeningen moeten er gemaakt worden?\n\n\n\n\n\n')) 
 except: 
         print("\nGelieve een geldig getal op te geven, de standaard waarde is 10\n")
@@ -94,7 +100,9 @@ gates = ["AND", "OR", "XOR"]
 
 
 
+
 #Start van het programma, het aantal oefeningen dat gegenereerd moet worden, moet opgegeven worden bij het opstarten
+
 for x in range(AmountOfExcercises):
         print("-------------------")
         print("oefening " + str(x +1 ))
@@ -102,3 +110,6 @@ for x in range(AmountOfExcercises):
         gate = gates[random.randint(0,len(gates)-1)]
         makearray(random.randint(MinNumber,MaxNumber),bewerking, gate)
 createHTML.main(createHTML.globalmessage)
+
+
+print ('It took', time.time()-start, 'seconds.')
