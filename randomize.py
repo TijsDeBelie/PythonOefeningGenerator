@@ -9,7 +9,7 @@ except ImportError:
 
 #Hoeveel getallen er minstens in 1 oefening moeten staan
 MinNumber = 2
-#Hoeveel getallen er maximum in 1 oefening moeten staan
+#Hoeveel getallen er maximum in 1 oefening mogen staan
 MaxNumber = 4
 
 
