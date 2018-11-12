@@ -15,7 +15,7 @@ MaxNumber = 4
 
 
 try:
-        AmountOfExcercises = int(input('\n\nHoeveel oefeningen moeten er gemaakt worden?\n\n')) 
+        AmountOfExcercises = int(input('\n\n\n\n\n\nHoeveel oefeningen moeten er gemaakt worden?\n\n\n\n\n\n')) 
 except: 
         print("\nGelieve een geldig getal op te geven, de standaard waarde is 10\n")
         AmountOfExcercises = 10
