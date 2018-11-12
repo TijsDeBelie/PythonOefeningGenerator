@@ -1,44 +1,58 @@
-import random
-import createHTML
-import operator
-from functools import reduce
 
+try:
+        import random
+        import createHTML
+        import operator
+        from functools import reduce
+except ImportError:
+        print("\nEen import error zorgde ervoor dat het programma niet kan starten!\n")
 
+#Hoeveel getallen er minstens in 1 oefening moeten staan
 MinNumber = 2
+#Hoeveel getallen er maximum in 1 oefening moeten staan
 MaxNumber = 4
-AmountOfExcercises = 10
+
+
+
+try:
+        AmountOfExcercises = int(input('\n\nHoeveel oefeningen moeten er gemaakt worden?\n\n')) 
+except: 
+        print("\nGelieve een geldig getal op te geven, de standaard waarde is 10\n")
+        AmountOfExcercises = 10
 
 def randomnumber(min, max):
         return (random.randint(min, max))
 
 
-#Maakt een array van random nummers 
-#TODO verwijder som als laatste cijfer van array, heeft implicaties in createhtml.py
 
-# FORMAT, ENKEL VOOR POSITIEVE GETALLEN
-# AND &
-# OR |
-# XOR ^
-# NEGATIEVE GETALLEN (Beschouw het als een positief getal)
-# 000101001 --> alle nullen naar 1 en 1 naar 0 --> 111010110 + 1 --> 111010111 (2 complement systeem)
-# XOR is 1111111111 vergelijken (geen verschil is 0, wel verschil is 1)
-# 001101101
-# 111111111
-# 001101101
-# 
-#  --> 512
-# 110010010
-
-
-# (~500)^ 0x3FF
-
+#functie om getallen om te zetten naar binaire vorm
+#NIET GEBRUIKT MOMENTEEL
 ToBin = lambda x, count=8: "".join(map(lambda y:str((x>>y)&1), range(count-1, -1, -1)))
 
+def tweeComplement(nummer):
+        if (nummer < 0):
+                nummer = (~nummer) ^ 1 * 0x3FF
+        return nummer
 
+#Converteert het opgegeven nummer in octale notatie
+def convertOctaal(nummer):
+        return "{0:o}".format(tweeComplement(nummer))
+
+
+
+#logische gates
+def AND(A, B):
+        return A & B
+def OR(A, B):
+        return A | B
+def XOR(A, B):
+        return A ^ B
+
+
+#Maakt een array van random nummers 
 def makearray(number, bewerking, gate):
         array = list()
         total = 0
-        #TODO totalen berekenen nog niet in orde
         for x in range(number):
                 generatednumber = randomnumber(-512, 512)
                 array.append(generatednumber)
@@ -66,40 +80,21 @@ def makearray(number, bewerking, gate):
         else:
                 makearray(random.randint(MinNumber,MaxNumber),bewerking, gate)
                 
-def tweeComplement(nummer):
-        if (nummer < 0):
-                nummer = (~nummer) ^ 1 * 0x3FF
-        return nummer
-
-def convertOctaal(nummer):
-        return "{0:o}".format(tweeComplement(nummer))
 
 
+#Mogelijke bewerkingen (beperkt tot + en -)
 bewerkingen = ["+", "-"]
+#Mogelijke Gates, (Beperkt tot AND, OR, XOR)
 gates = ["AND", "OR", "XOR"]
 
+
+
+
+#Start van het programma, het aantal oefeningen dat gegenereerd moet worden, moet opgegeven worden bij het opstarten
 for x in range(AmountOfExcercises):
         print("-------------------")
-        print("oefening " + str(x))
+        print("oefening " + str(x +1 ))
         bewerking = bewerkingen[random.randint(0,len(bewerkingen)-1)]
         gate = gates[random.randint(0,len(gates)-1)]
         makearray(random.randint(MinNumber,MaxNumber),bewerking, gate)
 createHTML.main(createHTML.globalmessage)
-
-#createHTML.html(([10,5,8]), "-", "AND"],"-","AND")
-
-#wat is octaal? 10 --> 12
-""" print(convertOctaal(12))
-
-
-
-def AND(A, B):
-        return A & B
-def OR(A, B):
-        return A | B
-def XOR(A, B):
-        return A ^ B
-
-print(AND(245, 18))
-print(OR(245, 18))
-print(XOR(245, 18)) """
