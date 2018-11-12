@@ -18,4 +18,10 @@ Enter of een ongeldig getal zal altijd terugspringen naar de standaard waarde (1
 
 2.  **CreateHtml.py** Dit is het 2de bestand, dit zorgt ervoor dat de html wordt gemaakt en dat de oefening een goede layout krijgen
 
-3. **mystel.css** Dit is het optionele bestand dat ervoor zorgt dat alles mooi onder elkaar wordt weergegeven zoals het hoort, er is ook andere css aanwezig die ervoor zorgt dat de uitkomsten rechts van de pagina zich bevinden, dit is makkelijker om er af te halen.
+3. **mystyle.css** Dit is het optionele bestand dat ervoor zorgt dat alles mooi onder elkaar wordt weergegeven zoals het hoort, er is ook andere css aanwezig die ervoor zorgt dat de uitkomsten rechts van de pagina zich bevinden, dit is makkelijker om er af te halen.
+
+4. **Oefening.html** Het belangrijkste bestand, dit is het resultaat van het pythonscript. Dit kan makkelijk geexporteerd worden
+
+5. In de folder Dist staat de **Randomise.exe** en **mystyle.css** voor het eenvoudig uitvoeren van het programma.
+
+6. De andere bestanden zijn nodig om de **.exe** te maken of ter ondersteuning van het pythonscript en zijn niet geschreven door ons.
