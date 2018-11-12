@@ -1,6 +1,7 @@
 import random
 import createHTML
-
+import operator
+from functools import reduce
 
 
 MinNumber = 2
@@ -39,16 +40,15 @@ def makearray(number, bewerking, gate):
         total = 0
         #TODO totalen berekenen nog niet in orde
         for x in range(number):
-                print("Cijfer " + str(x + 1))
                 generatednumber = randomnumber(-1022, 1023)
-                print("GENERATED NUMBER " + str(generatednumber))
                 array.append(generatednumber)
-                if(bewerking =="+"):
-                        total+=generatednumber
-                        print(total)
-                elif(bewerking =="-"):
-                        total-=generatednumber
-                        print(total)
+
+        if(bewerking =="+"):
+                total = reduce(operator.add, array)
+                
+        elif(bewerking =="-"):
+                total = reduce(operator.sub, array)
+
         for x in range(len(array)):
                 rand = random.randint(1,4)
                 if rand == 1:
@@ -59,7 +59,6 @@ def makearray(number, bewerking, gate):
                         array[x] = hex(array[x])
                 """ elif rand == 4:
                         array[x] = ToBin(array[x]) """
-        print(array)
         
         if(total in range(-1022,1023)):
                 lijst = list()

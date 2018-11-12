@@ -23,10 +23,9 @@ def whatis(input):
 def html(array, bewerking, gate):
     global globalmessage
     message = ""
-    print("Bewerking " + bewerking)
     for x in range(len(array[0])):
         if(x == 0 or x == len(array[0])):
-            #print("first or last")
+            #first or last
             message += "<li class='number'>( %s )</li><li><p><sub class ='base'>%s</sub></p></li>" % (
             array[0][x], whatis(array[0][x]))
         elif(x % 2 == 0):
@@ -37,8 +36,7 @@ def html(array, bewerking, gate):
             #middelste getallen
             message += "<li class='bewerking'>%s</li><li class='number'>( %s )</li><li><p><sub class ='base'>%s</sub></p></li>" % (
             bewerking, array[0][x], whatis(array[0][x]))
-    globalmessage += "<ul id='row'>%s<li>= ____________</li><li class='total'>%d</li></ul>" %(message, array[1])
-    print (array)
+    globalmessage += "<ul id='row'>%s<li>= ____________</li><sub class='base'>(10)</sub><li class='total'>%d</li></ul>" %(message, array[1])
 
 #Gaat headers toevoegen aan de html en wanneer gedaan het bestand ook openen
 def main(message):
