@@ -25,3 +25,7 @@ Enter of een ongeldig getal zal altijd terugspringen naar de standaard waarde (1
 5. In de folder Dist staat de **Randomise.exe** en **mystyle.css** voor het eenvoudig uitvoeren van het programma.
 
 6. De andere bestanden zijn nodig om de **.exe** te maken of ter ondersteuning van het pythonscript en zijn niet geschreven door ons.
+
+### Andere software gebruikt
+We hebben pyinstaller gebruikt om ons python script te bundelen en in een **.exe** om te vormen. 
+- pyinstaller --onefile randomise.py
