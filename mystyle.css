@@ -41,20 +41,20 @@ span{
     /*display: none;*/
 }
 .gate {
-    background-color: red;
+    /*background-color: red;*/
 }
 .number{
-    background-color: lightblue
+    /*background-color: lightblue*/
 }
 .base {
-    background-color: green;
+    /*background-color: green;*/
     
 }
 .basetotal {
-    background-color: green;
+    /*background-color: green;*/
     float: right;
 }
 .bewerking{
-    background-color: darkcyan
+    /*background-color: darkcyan*/
 
 }

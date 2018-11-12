@@ -9,16 +9,25 @@ def is_hex(s):
     except ValueError:
         return False
 
+
+def is_oct(s):
+    try:
+       int(s, 8)
+       return True
+    except ValueError:
+        return False
+
 def whatis(input):
     if type(input) is int:
         #base 10 - integer
         return "(10)"
+    elif is_oct(input):
+        #base 8 - octaal
+        return "(8)"
     elif is_hex(input):
         #base 16 - hexadecimaal
          return "(16)"
-    else:
-        #base 8 - octaal
-        return "(8)"
+   
 
 """ elif type(input) is bin:
         #base 2
