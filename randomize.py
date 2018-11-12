@@ -55,7 +55,7 @@ def makearray(number, bewerking, gate):
         array = list()
         total = 0
         for x in range(number):
-                generatednumber = randomnumber(-512, 512)
+                generatednumber = randomnumber(-512, 511)
                 array.append(generatednumber)
 
         if(bewerking =="+"):
@@ -74,7 +74,7 @@ def makearray(number, bewerking, gate):
                         array[x] = '{:x}'.format(array[x])
         #range van 10 bit signed integer is -512, 512
         #indien out of range wordt de oefening weggegooid en wordt er een nieuwe gemaakt
-        if(total in range(-512,512)):
+        if(total in range(-512,511)):
                 lijst = list()
                 lijst.append(array)
                 lijst.append(total)
