@@ -6,7 +6,7 @@ from functools import reduce
 
 MinNumber = 2
 MaxNumber = 4
-AmountOfExcercises = 1
+AmountOfExcercises = 10
 
 def randomnumber(min, max):
         return (random.randint(min, max))
@@ -50,15 +50,11 @@ def makearray(number, bewerking, gate):
                 total = reduce(operator.sub, array)
 
         for x in range(len(array)):
-                rand = random.randint(1,4)
-                if rand == 1:
-                        print("do nothing")
-                elif rand == 2:
+                rand = random.randint(1,3)
+                if rand == 2:
                         array[x] = convertOctaal(array[x])
                 elif rand == 3:
-                        array[x] = hex(array[x])
-                """ elif rand == 4:
-                        array[x] = ToBin(array[x]) """
+                        array[x] = '{:x}'.format(array[x])
         
         if(total in range(-1022,1023)):
                 lijst = list()

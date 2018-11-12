@@ -2,13 +2,18 @@ import webbrowser
 globalmessage = ""
 
 #Bepalen wat het ingevoerde cijfer nu is, belangrijk om die base eronder te zetten
-
+def is_hex(s):
+    try:
+        int(s, 16)
+        return True
+    except ValueError:
+        return False
 
 def whatis(input):
     if type(input) is int:
         #base 10
         return "(10)"
-    elif input[:2] == "0x" or input[:3] == "-0x":
+    elif is_hex(input):
         #base 16
          return "(16)"
     else:
