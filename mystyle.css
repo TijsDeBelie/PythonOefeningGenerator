@@ -50,6 +50,10 @@ span{
     background-color: green;
     
 }
+.basetotal {
+    background-color: green;
+    float: right;
+}
 .bewerking{
     background-color: darkcyan
 

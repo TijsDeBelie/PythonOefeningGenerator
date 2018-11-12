@@ -1,7 +1,7 @@
 import webbrowser
 globalmessage = ""
 
-#Bepalen wat het ingevoerde cijfer nu is, belangrijk om die base eronder te zetten
+#Bepalen wat het ingevoerde cijfer nu is, belangrijk om de base waarde eronder te zetten
 def is_hex(s):
     try:
         int(s, 16)
@@ -11,13 +11,13 @@ def is_hex(s):
 
 def whatis(input):
     if type(input) is int:
-        #base 10
+        #base 10 - integer
         return "(10)"
     elif is_hex(input):
-        #base 16
+        #base 16 - hexadecimaal
          return "(16)"
     else:
-        #base 8
+        #base 8 - octaal
         return "(8)"
 
 """ elif type(input) is bin:
@@ -41,7 +41,7 @@ def html(array, bewerking, gate):
             #middelste getallen
             message += "<li class='bewerking'>%s</li><li class='number'>( %s )</li><li><p><sub class ='base'>%s</sub></p></li>" % (
             bewerking, array[0][x], whatis(array[0][x]))
-    globalmessage += "<ul id='row'>%s<li>= ____________</li><sub class='base'>(10)</sub><li class='total'>%d</li></ul>" %(message, array[1])
+    globalmessage += "<ul id='row'>%s<li>= ____________</li><sub class='base'>(10)</sub><li class='total'>%d<sub class='basetotal'>(10)</sub></li></ul>" %(message, array[1])
 
 #Gaat headers toevoegen aan de html en wanneer gedaan het bestand ook openen
 def main(message):

@@ -1,4 +1,3 @@
-
 try:
         import random
         import createHTML
@@ -6,6 +5,8 @@ try:
         from functools import reduce
 except ImportError:
         print("\nEen import error zorgde ervoor dat het programma niet kan starten!\n")
+
+
 
 #Hoeveel getallen er minstens in 1 oefening moeten staan
 MinNumber = 2
@@ -58,9 +59,11 @@ def makearray(number, bewerking, gate):
                 array.append(generatednumber)
 
         if(bewerking =="+"):
+                #operator.add = optellen (addition)
                 total = reduce(operator.add, array)
                 
         elif(bewerking =="-"):
+                #operator.sub = aftrekken (substract)
                 total = reduce(operator.sub, array)
 
         for x in range(len(array)):
@@ -69,7 +72,8 @@ def makearray(number, bewerking, gate):
                         array[x] = convertOctaal(array[x])
                 elif rand == 3:
                         array[x] = '{:x}'.format(array[x])
-        
+        #range van 10 bit signed integer is -512, 512
+        #indien out of range wordt de oefening weggegooid en wordt er een nieuwe gemaakt
         if(total in range(-512,512)):
                 lijst = list()
                 lijst.append(array)
