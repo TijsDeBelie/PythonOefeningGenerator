@@ -57,20 +57,22 @@ def XOR(A, B):
 
 
 #Maakt een array van random nummers 
-def makearray(number, bewerking, gate):
+def makearray(termen, bewerkingenArray):
         array = list()
         total = 0
-        for x in range(number):
+        for x in range(termen):
                 generatednumber = randomnumber(-512, 511)
                 array.append(generatednumber)
 
-        if(bewerking =="+"):
-                #operator.add = optellen (addition)
-                total = reduce(operator.add, array)
-                
-        elif(bewerking =="-"):
-                #operator.sub = aftrekken (substract)
-                total = reduce(operator.sub, array)
+        if (termen == 2):
+                total = bereken(array[0], array[1], bewerkingenArray[0])
+        elif (termen == 3):
+                total += bereken(array[0], array[1], bewerkingenArray[0])
+                total += bereken(total, array[2], bewerkingenArray[1])
+        elif (termen == 4):
+                bew1 = bereken(array[0], array[1], bewerkingenArray[0])
+                bew2 = bereken(array[2], array[3], bewerkingenArray[2])
+                total = bereken(bew1, bew2, bewerkingenArray[1])
 
         for x in range(len(array)):
                 rand = random.randint(1,3)
@@ -84,21 +86,26 @@ def makearray(number, bewerking, gate):
                 lijst = list()
                 lijst.append(array)
                 lijst.append(total)
-                lijst.append(gate)
-                createHTML.html(lijst, bewerking, gate)
+                lijst.append(bewerkingenArray)
+                createHTML.html(lijst)
                 
         else:
-                makearray(random.randint(MinNumber,MaxNumber),bewerking, gate)
+                makearray(termen ,bewerkingenArray)
                 
+def bereken(A, B, bew):
+                if (bew == "+"):
+                        return A + B
+                elif (bew == "-"):
+                        return A - B
+                elif (bew == "AND"):
+                        return AND(A, B)
+                elif (bew == "OR"):
+                        return OR(A, B)
+                elif (bew == "XOR"):
+                        return XOR(A, B)
 
-
-#Mogelijke bewerkingen (beperkt tot + en -)
-bewerkingen = ["+", "-"]
-#Mogelijke Gates, (Beperkt tot AND, OR, XOR)
-gates = ["AND", "OR", "XOR"]
-
-
-
+#Mogelijke bewerkingen (beperkt tot +, -, AND, OR, XOR)
+bewerkingen = ["+", "-", "AND", "OR", "XOR"]
 
 
 #Start van het programma, het aantal oefeningen dat gegenereerd moet worden, moet opgegeven worden bij het opstarten
@@ -106,9 +113,11 @@ gates = ["AND", "OR", "XOR"]
 for x in range(AmountOfExcercises):
         print("-------------------")
         print("oefening " + str(x +1 ))
-        bewerking = bewerkingen[random.randint(0,len(bewerkingen)-1)]
-        gate = gates[random.randint(0,len(gates)-1)]
-        makearray(random.randint(MinNumber,MaxNumber),bewerking, gate)
+        aantalTermen = random.randint(MinNumber,MaxNumber)
+        bewerkingArray = list()
+        for x in range(aantalTermen - 1):
+                bewerkingArray.append(bewerkingen[random.randint(0,len(bewerkingen)-1)])
+        makearray(aantalTermen, bewerkingArray)
 createHTML.main(createHTML.globalmessage)
 
 

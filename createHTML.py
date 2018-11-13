@@ -26,29 +26,29 @@ def whatis(input):
     elif is_hex(input):
         #base 16 - hexadecimaal
          return "(16)"
-   
-
-""" elif type(input) is bin:
-        #base 2
-        return "(2)" """
 
 #Om de html te maken en samen te voegen, gebruikt bovenstaande functies om inhoud in te vullen
-def html(array, bewerking, gate):
+def html(array):
     global globalmessage
     message = ""
-    for x in range(len(array[0])):
-        if(x == 0 or x == len(array[0])):
-            #first or last
-            message += "<li class='number'>( %s )</li><li><p><sub class ='base'>%s</sub></p></li>" % (
-            array[0][x], whatis(array[0][x]))
-        elif(x % 2 == 0):
-            #middelste getallen
-            message += "<li class='gate'>%s</li><li class='number'>( %s )</li><li><p><sub class ='base'>%s</sub></p></li>" % (
-            gate, array[0][x], whatis(array[0][x]))
-        else:
-            #middelste getallen
-            message += "<li class='bewerking'>%s</li><li class='number'>( %s )</li><li><p><sub class ='base'>%s</sub></p></li>" % (
-            bewerking, array[0][x], whatis(array[0][x]))
+    if (len(array[0]) == 2):
+        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][0], whatis(array[0][0]))
+        message += "<li class='bewerking'>%s</li>" %(array[2][0])
+        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][1], whatis(array[0][1]))
+    elif (len(array[0]) == 3):
+        message += "<li class='number'>(%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][0], whatis(array[0][0]))
+        message += "<li class='bewerking'>%s</li>" % (array[2][0])
+        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li><li class='number'>)</li>" %(array[0][1], whatis(array[0][1]))
+        message += "<li class='bewerking'>%s</li>" %(array[2][1])
+        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][2], whatis(array[0][2]))
+    elif (len(array[0]) == 4):
+        message += "<li class='number'>(%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][0], whatis(array[0][0]))
+        message += "<li class='bewerking'>%s</li>" %(array[2][0])
+        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li><li class='number'>)</li>" %(array[0][1], whatis(array[0][1]))
+        message += "<li class='bewerking'>%s</li>" %(array[2][1])
+        message += "<li class='number'>(%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][2], whatis(array[0][2]))
+        message += "<li class='bewerking'>%s</li>" %(array[2][2])
+        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li><li class='number'>)</li>" %(array[0][3], whatis(array[0][3]))
     globalmessage += "<ul id='row'>%s<li>= ____________</li><sub class='base'>(10)</sub><li class='total'>%d<sub class='basetotal'>(10)</sub></li></ul>" %(message, array[1])
 
 #Gaat headers toevoegen aan de html en wanneer gedaan het bestand ook openen
