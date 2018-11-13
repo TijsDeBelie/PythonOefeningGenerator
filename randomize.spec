@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['randomize.py'],
-             pathex=['D:\\Odisee\\3TI\\Information managment 5\\PythonOefeningGenerator'],
+             pathex=['C:\\Users\\Tijs De Belie\\Downloads\\pythonOefGen\\PythonOefeningGenerator'],
              binaries=[],
              datas=[],
              hiddenimports=[],
