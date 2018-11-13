@@ -38,7 +38,7 @@ ToBin = lambda x, count=8: "".join(map(lambda y:str((x>>y)&1), range(count-1, -1
 
 def tweeComplement(nummer):
         if (nummer < 0):
-                nummer = (~nummer) ^ 1 * 0x3FF
+                nummer = (~nummer) ^ (1 * 0x1)
         return nummer
 
 #Converteert het opgegeven nummer in octale notatie
@@ -46,6 +46,8 @@ def convertOctaal(nummer):
         return "{0:o}".format(tweeComplement(nummer))
 
 
+def convertHex(nummer):
+        return "{:X}".format(tweeComplement(nummer))
 
 #logische gates
 def AND(A, B):
@@ -62,6 +64,10 @@ def makearray(termen, bewerkingenArray):
         total = 0
         for x in range(termen):
                 generatednumber = randomnumber(-512, 511)
+                #voorkomen dat je een - of + 0 hebt
+                if generatednumber == 0:
+                        generatednumber = generatednumber + 1
+
                 array.append(generatednumber)
 
         if (termen == 2):
@@ -74,35 +80,51 @@ def makearray(termen, bewerkingenArray):
                 bew2 = bereken(array[2], array[3], bewerkingenArray[2])
                 total = bereken(bew1, bew2, bewerkingenArray[1])
 
+        baseArray = list()
         for x in range(len(array)):
                 rand = random.randint(1,3)
                 if rand == 2:
                         array[x] = convertOctaal(array[x])
+                        baseArray.append("(8)")
                 elif rand == 3:
-                        array[x] = '{:x}'.format(array[x])
+                        array[x] = convertHex(array[x])
+                        baseArray.append("(16)")
+                else:
+                        baseArray.append("(10)")
+
+        strArray = list()
+        for x in range(len(array)):
+                generatedNumberString = str(array[x])
+                if ("-" in generatedNumberString):
+                        generatedNumberString = "(" + generatedNumberString + ")" 
+                strArray.append(generatedNumberString)
+
         #range van 10 bit signed integer is -512, 512
         #indien out of range wordt de oefening weggegooid en wordt er een nieuwe gemaakt
         if(total in range(-512,511)):
                 lijst = list()
-                lijst.append(array)
+                lijst.append(strArray)
                 lijst.append(total)
                 lijst.append(bewerkingenArray)
+                lijst.append(baseArray)
                 createHTML.html(lijst)
                 
         else:
                 makearray(termen ,bewerkingenArray)
                 
 def bereken(A, B, bew):
+                t1 = int(A)
+                t2 = int(B)
                 if (bew == "+"):
-                        return A + B
+                        return t1 + t2
                 elif (bew == "-"):
-                        return A - B
+                        return t1 - t2
                 elif (bew == "AND"):
-                        return AND(A, B)
+                        return AND(t1, t2)
                 elif (bew == "OR"):
-                        return OR(A, B)
+                        return OR(t1, t2)
                 elif (bew == "XOR"):
-                        return XOR(A, B)
+                        return XOR(t1, t2)
 
 #Mogelijke bewerkingen (beperkt tot +, -, AND, OR, XOR)
 bewerkingen = ["+", "-", "AND", "OR", "XOR"]

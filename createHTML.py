@@ -32,24 +32,24 @@ def html(array):
     global globalmessage
     message = ""
     if (len(array[0]) == 2):
-        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][0], whatis(array[0][0]))
+        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][0], array[3][0])
         message += "<li class='bewerking'>%s</li>" %(array[2][0])
-        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][1], whatis(array[0][1]))
+        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][1], array[3][1])
     elif (len(array[0]) == 3):
-        message += "<li class='number'>(%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][0], whatis(array[0][0]))
+        message += "<li class='number'>(%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][0], array[3][0])
         message += "<li class='bewerking'>%s</li>" % (array[2][0])
-        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li><li class='number'>)</li>" %(array[0][1], whatis(array[0][1]))
+        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li><li class='number'>)</li>" %(array[0][1], array[3][1])
         message += "<li class='bewerking'>%s</li>" %(array[2][1])
-        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][2], whatis(array[0][2]))
+        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][2], array[3][2])
     elif (len(array[0]) == 4):
-        message += "<li class='number'>(%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][0], whatis(array[0][0]))
+        message += "<li class='number'>(%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][0], array[3][0])
         message += "<li class='bewerking'>%s</li>" %(array[2][0])
-        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li><li class='number'>)</li>" %(array[0][1], whatis(array[0][1]))
+        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li><li class='number'>)</li>" %(array[0][1], array[3][1])
         message += "<li class='bewerking'>%s</li>" %(array[2][1])
-        message += "<li class='number'>(%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][2], whatis(array[0][2]))
+        message += "<li class='number'>(%s</li><li><p><sub class ='base'>%s</sub></p></li>" %(array[0][2], array[3][2])
         message += "<li class='bewerking'>%s</li>" %(array[2][2])
-        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li><li class='number'>)</li>" %(array[0][3], whatis(array[0][3]))
-    globalmessage += "<ul id='row'>%s<li>= ____________</li><sub class='base'>(10)</sub><li class='total'>%d<sub class='basetotal'>(10)</sub></li></ul>" %(message, array[1])
+        message += "<li class='number'>%s</li><li><p><sub class ='base'>%s</sub></p></li><li class='number'>)</li>" %(array[0][3], array[3][3])
+    globalmessage += "<ul id='row'>%s<li>= ____________</li><p><sub class='base'>(10)</sub><p><li class='total'>%d<sub class='basetotal'>(10)</sub></li></ul>" %(message, array[1])
 
 #Gaat headers toevoegen aan de html en wanneer gedaan het bestand ook openen
 def main(message):
