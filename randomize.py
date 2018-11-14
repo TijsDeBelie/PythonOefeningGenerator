@@ -133,8 +133,8 @@ bewerkingen = ["+", "-", "AND", "OR", "XOR"]
 #Start van het programma, het aantal oefeningen dat gegenereerd moet worden, moet opgegeven worden bij het opstarten
 
 for x in range(AmountOfExcercises):
-        print("-------------------")
-        print("oefening " + str(x +1 ))
+        #print("-------------------")
+        #print("oefening " + str(x +1 ))
         aantalTermen = random.randint(MinNumber,MaxNumber)
         bewerkingArray = list()
         for x in range(aantalTermen - 1):
@@ -142,5 +142,5 @@ for x in range(AmountOfExcercises):
         makearray(aantalTermen, bewerkingArray)
 createHTML.main(createHTML.globalmessage)
 
-
 print ('It took', time.time()-start, 'seconds.')
+input("Press any key to close this terminal\n")

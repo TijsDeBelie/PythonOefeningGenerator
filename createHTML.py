@@ -54,7 +54,7 @@ def html(array):
 #Gaat headers toevoegen aan de html en wanneer gedaan het bestand ook openen
 def main(message):
     f = open('oefening.html', 'w')
-    header = "<html><head><link rel='stylesheet' type='text/css' href='mystyle.css'></head><body>"
+    header = "<html><head><link rel='stylesheet' type='text/css' href='mystyle.css'></head><body><h1>OefeningGenerator voor rekenen met hexadecimale, octale en decimale getallen.<br></h1>"
     footer = "</body></html>"
     f.write(str(header + message + footer))
     f.close()
